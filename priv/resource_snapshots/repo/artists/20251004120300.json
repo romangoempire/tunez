@@ -78,10 +78,31 @@
   ],
   "base_filter": null,
   "check_constraints": [],
-  "custom_indexes": [],
+  "custom_indexes": [
+    {
+      "all_tenants?": false,
+      "concurrently": false,
+      "error_fields": [],
+      "fields": [
+        {
+          "type": "string",
+          "value": "name gin_trgm_ops"
+        }
+      ],
+      "include": null,
+      "message": null,
+      "name": "artist_name_gin_index",
+      "nulls_distinct": true,
+      "prefix": null,
+      "table": null,
+      "unique": false,
+      "using": "GIN",
+      "where": null
+    }
+  ],
   "custom_statements": [],
   "has_create_action": true,
-  "hash": "E0EC92701E2EC4EFFC8ADACF2903E40E07DF8CF0D7CE1D2D1F165F8849947CA5",
+  "hash": "B8419A84309C4B08CED1563C9B1966B276F360509D3E26C723BF3408647C2055",
   "identities": [],
   "multitenancy": {
     "attribute": null,

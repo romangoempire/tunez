@@ -12,6 +12,7 @@ defmodule Tunez.Music do
       define :create_artist, action: :create
       define :read_artists, action: :read
       define :get_artist_by_id, action: :read, get_by: :id
+      define :search_artists, action: :search, args: [:query]
       define :update_artists, action: :update
       define :destroy_artist, action: :destroy
     end
