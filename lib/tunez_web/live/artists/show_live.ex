@@ -191,8 +191,6 @@ defmodule TunezWeb.Artists.ShowLive do
          socket
          |> put_flash(:error, "Could not delete album")}
     end
-
-    {:noreply, socket}
   end
 
   def handle_event("follow", _params, socket) do
