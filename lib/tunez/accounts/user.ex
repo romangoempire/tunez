@@ -77,6 +77,10 @@ defmodule Tunez.Accounts.User do
       prepare AshAuthentication.Preparations.FilterBySubject
     end
 
+    update :set_role do
+      accept [:role]
+    end
+
     update :change_password do
       # Use this action to allow users to change their password by providing
       # their current password and a new password.
@@ -289,6 +293,11 @@ defmodule Tunez.Accounts.User do
     end
 
     attribute :confirmed_at, :utc_datetime_usec
+
+    attribute :role, Tunez.Accounts.Role do
+      allow_nil? false
+      default :user
+    end
   end
 
   identities do
