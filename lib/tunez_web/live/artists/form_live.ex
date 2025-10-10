@@ -5,7 +5,7 @@ defmodule TunezWeb.Artists.FormLive do
     artist = Tunez.Music.get_artist_by_id!(artist_id, actor: socket.assigns.current_user)
 
     form =
-      Tunez.Music.form_to_update_artists(artist, actor: socket.assigns.current_user)
+      Tunez.Music.form_to_update_artist(artist, actor: socket.assigns.current_user)
       |> AshPhoenix.Form.ensure_can_submit!()
 
     socket =
