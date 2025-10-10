@@ -55,7 +55,7 @@ defmodule Tunez.Music do
           load: [:album_count, :latest_album_year_released, :cover_image_url]
         ]
 
-      define :update_artists, action: :update
+      define :update_artist, action: :update
       define :destroy_artist, action: :destroy
     end
 

@@ -42,7 +42,7 @@ defmodule TunezWeb.Artists.ShowLive do
             Delete Artist
           </.button_link>
         </:action>
-        <:action :if={Tunez.Music.can_update_artists?(@current_user, @artist)}>
+        <:action :if={Tunez.Music.can_update_artist?(@current_user, @artist)}>
           <.button_link navigate={~p"/artists/#{@artist.id}/edit"} kind="primary" inverse>
             Edit Artist
           </.button_link>
