@@ -86,3 +86,4 @@ config :phoenix_live_view,
 config :swoosh, :api_client, false
 
 config :ash_authentication, debug_authentication_failures?: true
+config :ash, :pub_sub, debug?: true

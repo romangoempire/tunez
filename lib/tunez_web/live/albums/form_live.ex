@@ -130,7 +130,7 @@ defmodule TunezWeb.Albums.FormLive do
       {:ok, album} ->
         socket =
           socket
-          |> put_flash(:info, "Album saved")
+          |> put_flash(:info, "Album saved successfully")
           |> push_navigate(to: ~p"/artists/#{album.artist_id}")
 
         {:noreply, socket}
@@ -138,7 +138,7 @@ defmodule TunezWeb.Albums.FormLive do
       {:error, form} ->
         socket =
           socket
-          |> put_flash(:error, "Could not save album")
+          |> put_flash(:error, "Could not save album data")
           |> assign(:form, form)
 
         {:noreply, socket}

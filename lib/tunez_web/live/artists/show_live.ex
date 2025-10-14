@@ -162,7 +162,7 @@ defmodule TunezWeb.Artists.ShowLive do
       :ok ->
         socket =
           socket
-          |> put_flash(:info, "Artist deleted")
+          |> put_flash(:info, "Artist deleted successfully")
           |> push_navigate(to: ~p"/")
 
         {:noreply, socket}
@@ -188,7 +188,7 @@ defmodule TunezWeb.Artists.ShowLive do
              Enum.reject(albums, &(&1.id == album_id))
            end)
          end)
-         |> put_flash(:info, "Album deleted")}
+         |> put_flash(:info, "Album deleted successfully")}
 
       {:error, error} ->
         Logger.info("Could not delete album '#{album_id}': #{inspect(error)}")
@@ -200,17 +200,10 @@ defmodule TunezWeb.Artists.ShowLive do
   end
 
   def handle_event("follow", _params, socket) do
-    dbg(socket.assigns.artist.id)
-    dbg(socket.assigns.current_user)
-
     socket =
       case Tunez.Music.follow_artist(socket.assigns.artist, actor: socket.assigns.current_user) do
-        {:ok, _} ->
-          update(socket, :artist, &%{&1 | followed_by_me: true})
-
-        {:error, msg} ->
-          dbg(msg)
-          put_flash(socket, :error, "Could not follow artist ")
+        {:ok, _} -> update(socket, :artist, &%{&1 | followed_by_me: true})
+        {:error, _} -> put_flash(socket, :error, "Could not follow artist ")
       end
 
     {:noreply, socket}

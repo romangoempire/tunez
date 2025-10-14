@@ -26,7 +26,7 @@ defmodule Tunez.Accounts do
         end
 
         post :sign_in_with_password do
-          route "/signin"
+          route "/sign-in"
 
           metadata fn _subject, user, _request ->
             %{token: user.__metadata__.token}
@@ -44,6 +44,9 @@ defmodule Tunez.Accounts do
       define :get_user_by_email, action: :get_by_email, args: [:email]
     end
 
-    resource Tunez.Accounts.Notification
+    resource Tunez.Accounts.Notification do
+      define :notifications_for_user, action: :for_user
+      define :dismiss_notification, action: :destroy
+    end
   end
 end

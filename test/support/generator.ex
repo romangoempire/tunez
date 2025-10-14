@@ -31,9 +31,9 @@ defmodule Tunez.Generator do
     after_action =
       if opts[:track_count] do
         fn album ->
-          raise "Uncomment the `track_count` after action for the album generator in `test/support/generator.ex` (and remove this line)"
-          # generate_many(track(seed?: true, album_id: album.id), opts[:track_count])
-          # Ash.load!(album, :tracks)
+          # raise "Uncomment the `track_count` after action for the album generator in `test/support/generator.ex` (and remove this line)"
+          generate_many(track(seed?: true, album_id: album.id), opts[:track_count])
+          Ash.load!(album, :tracks)
         end
       end
 
@@ -118,16 +118,16 @@ defmodule Tunez.Generator do
   - `:album_id` - Specify the album ID for the notification
   """
   def notification(opts \\ []) do
-    raise "Uncomment the `notification` generator content in `test/support/generator.ex` (and remove this line)"
-    # user_id = opts[:user_id] || once(:default_user_id, fn -> generate(user()).id end)
-    # album_id = opts[:album_id] || once(:default_album_id, fn -> generate(album()).id end)
+    # raise "Uncomment the `notification` generator content in `test/support/generator.ex` (and remove this line)"
+    user_id = opts[:user_id] || once(:default_user_id, fn -> generate(user()).id end)
+    album_id = opts[:album_id] || once(:default_album_id, fn -> generate(album()).id end)
 
-    # changeset_generator(
-    #   Tunez.Accounts.Notification,
-    #   :create,
-    #   overrides: %{user_id: user_id, album_id: album_id},
-    #   authorize?: false
-    # )
+    changeset_generator(
+      Tunez.Accounts.Notification,
+      :create,
+      overrides: %{user_id: user_id, album_id: album_id},
+      authorize?: false
+    )
   end
 
   @doc """
